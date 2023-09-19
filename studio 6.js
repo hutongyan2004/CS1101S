@@ -2,7 +2,7 @@
 function my_map(f,xs) {
     return accumulate((x,acc) => pair(f(x),acc),null,xs);
 }
-my_map(x => x + 1, list(1, 2, 3));
+//my_map(x => x + 1, list(1, 2, 3));
 // Result: list(2, 3, 4)
 
 
@@ -19,7 +19,13 @@ function remove_duplicates(lst) {
     }
     return helper(lst,null);
 }
-//remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
+/* version 2
+function remove_duplicates(lst) {
+    return is_null(lst)
+    ? null
+    : pair(head(lst),remove_duplicates(filter(x => !equal(x,head(lst)),tail(lst)) ));
+}*/
+remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
 // Result: list(1, 2, 3, 4)
 //remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
 // Result: list("a", "x", "b", "c", "d")
