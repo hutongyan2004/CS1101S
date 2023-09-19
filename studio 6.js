@@ -1,3 +1,30 @@
+//studio6 Q1
+function my_map(f,xs) {
+    return accumulate((x,acc) => pair(f(x),acc),null,xs);
+}
+my_map(x => x + 1, list(1, 2, 3));
+// Result: list(2, 3, 4)
+
+
+//studio6 Q2
+function remove_duplicates(lst) {
+    function helper(xs,result) {
+        if(is_null(xs)) {
+            return result;
+        }
+        else {
+            return helper(filter((x) => x !== head(xs),xs),
+            append(result,list(head(xs))) );
+        }
+    }
+    return helper(lst,null);
+}
+//remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
+// Result: list(1, 2, 3, 4)
+//remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
+// Result: list("a", "x", "b", "c", "d")
+
+//studio 6 Q3
 function makeup_amount(x, coins) {
   if (x === 0) {
     // If x is 0, we have found a valid combination.
@@ -22,7 +49,7 @@ function makeup_amount(x, coins) {
     return append(combi_A, combi_C);
   }
 }
-makeup_amount(22, list(1, 10, 5, 20, 1, 5, 1, 50));
+//makeup_amount(22, list(1, 10, 5, 20, 1, 5, 1, 50));
 // Result: list(list(20, 1, 1), list(10, 5, 1, 5, 1), list(1, 20, 1),
 // list(1, 20, 1), list(1, 10, 5, 5, 1),
 // list(1, 10, 5, 1, 5))
